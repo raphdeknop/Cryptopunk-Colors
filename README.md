@@ -1,9 +1,9 @@
 # Cryptopunk-Colors
-Which colors are used in the Cryptopunks ? I will populate this repo asap, let me clean my code first ;)
+For a project I'm doing, I wanted to know the exact hexadecimal values of all the colors used in the Cryptopunks. 
 
 ## How I did it
 
-First, I downloaded all 10k images from the Larvalabs website using a Shell script. The images are 336x336 px.
+First, I downloaded all 10k images from the Larvalabs website using a Shell script. I could've used the official image containing the 10k punks whose hash is on the Blockchain but I needed to have each punk separately anyways. I strongly encourage anyone wanting to get the colors to download the official image (https://github.com/larvalabs/cryptopunks/blob/master/punks.png). It's more efficient, and it doesn't put an enormous load on Larvalabs' servers. The images I had are 336x336 px large. 
 
 ```bash
 mkdir punk_images 
@@ -20,5 +20,7 @@ Once I had all the colors, I determined their hex code using `convert_to_html.r`
 
 Finally, I manually set each pixel color in GIMP, and exported the result.
 
+## Possible improvements
 
-
+- Change the script to use the single 10k image. 
+- Get more insight, for example the occurences of the colors.
