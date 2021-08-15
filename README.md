@@ -29,7 +29,7 @@ returns
 167         1 (186,172,162,255)  #BAACA2FF  srgba(186,172,162,1)
 ```
 
-Plotting can be done automatically. I installed `[csvkit](https://csvkit.readthedocs.io/)` by doing `pip install csvkit`, then we can load the csv using shell. This is useful because we'll make the canvas ourselves.
+Plotting can be done automatically. I installed [`csvkit`](https://csvkit.readthedocs.io/) by doing `pip install csvkit`, then we can load the csv using shell. This is useful because we'll make the canvas ourselves.
 
 To make the canvas, run `sh ./createCanvas.sh`. Read the comments in that file if you want more details on how it works but in short, there are x steps : 
 
