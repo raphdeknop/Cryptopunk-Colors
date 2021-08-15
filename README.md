@@ -36,3 +36,7 @@ To make the canvas, run `sh ./createCanvas.sh`. Read the comments in that file i
 1. Create an empty (transpareng BG) canvas
 2. Create a temporary file that contains only the hex values, from most common to least common
 3. Read each line of that file and color the pixels of the canvas accordingly (from left to right and top to bottom)
+
+
+Here is the result (HR added manually)
+![Punk colors from most common to least common](Punk_colors_HR.png "Punk colors from most common to least common")
