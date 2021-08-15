@@ -3,24 +3,28 @@ For a project I'm doing, I wanted to know the exact hexadecimal values of all th
 
 ## How I did it
 
-First, I downloaded all 10k images from the Larvalabs website using a Shell script. I could've used the official image containing the 10k punks whose hash is on the Blockchain but I needed to have each punk separately anyways. I strongly encourage anyone wanting to get the colors to download the official image (https://github.com/larvalabs/cryptopunks/blob/master/punks.png). It's more efficient, and it doesn't put an enormous load on Larvalabs' servers. The images I had are 336x336 px large. 
+Thanks to [@ddaavvee1234's suggestion](https://twitter.com/ddaavvee1234/status/1426545089489350658), I used imagemagick and could improve the performance tremendously. Plus, we get the occurences. 
 
-```bash
-mkdir punk_images 
-cd punk_images
-for i in {0..9999}
-do 
-wget "https://larvalabs.com/cryptopunk$i.png"
-done
+```
+identify -verbose punks.png
 ```
 
-I then ran the `read_all_punk_colors.r` script, which went through each pixel and saved the unique RGB colors in the `colors.csv` file. It's overkill and not efficient to go through all the 336x336 pixels so one could read every 14th row because the originals are 24x24 px large.
+More info : https://legacy.imagemagick.org/Usage/quantize/#extract
 
-Once I had all the colors, I determined their hex code using `convert_to_html.r`. 
+For previous versions, see commit history. 
+I exported the output into a csv that can be easily read. We obtain 222 colors instead of the 228 found with R. That is because we used the large image which does not contain any background.
 
-Finally, I manually set each pixel color in GIMP, and exported the result.
+We can query the csv file to see which colors appear only once :
 
-## Possible improvements
+```R
+df[df$OCCURENCE == 1,]
+```
 
-- Change the script to use the single 10k image. 
-- Get more insight, for example the occurences of the colors.
+returns 
+
+```
+    OCCURENCE              RGBA        HEX                  NAME
+90          1   (107,99,97,255)  #6B6361FF    srgba(107,99,97,1)
+155         1 (176,163,155,255)  #B0A39BFF  srgba(176,163,155,1)
+167         1 (186,172,162,255)  #BAACA2FF  srgba(186,172,162,1)
+```
